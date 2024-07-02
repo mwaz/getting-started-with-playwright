@@ -12,9 +12,10 @@ test("Search for a term and take a screenshot of the results page", async () => 
   // Find the search input and type a query
   // await page.getByLabel("Enter your search term").click();
   await page.locator('[type="search"]').fill("Playwright");
+  await page.locator('[type="search"]').press("Enter");
 
   // Click the search button
-  await page.getByLabel("Search the web").click();
+  // await page.getByLabel("Search the web").click();
 
   // Wait for the results page to load and display the results
   await page.waitForSelector("#b_results");
