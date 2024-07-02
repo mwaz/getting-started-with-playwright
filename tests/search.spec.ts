@@ -10,7 +10,7 @@ test("Search for a term and take a screenshot of the results page", async () => 
   await page.goto("https://www.bing.com");
 
   // Find the search input and type a query
-  await page.getByLabel("Enter your search term").click();
+  // await page.getByLabel("Enter your search term").click();
   await page.getByLabel("Enter your search term").fill("Playwright");
 
   // Click the search button
