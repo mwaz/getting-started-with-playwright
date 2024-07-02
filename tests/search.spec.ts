@@ -15,7 +15,7 @@ test("Search for a term and take a screenshot of the results page", async () => 
   await page.locator('[type="search"]').press("Enter");
 
   // Click the search button
-  // await page.getByLabel("Search the web").click();
+  await page.locator('[type="search"]').press("Enter");
 
   // Wait for the results page to load and display the results
   await page.waitForSelector("#b_results", { timeout: 60000 });
