@@ -1,29 +1,25 @@
 import { test, chromium } from "@playwright/test";
 
-test("Search for a term on Google and take a screenshot of the results page", async () => {
+test("Search for a term and take a screenshot of the results page", async () => {
   // Launch the browser
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  // Navigate to Google
-  await page.goto("https://www.google.com");
+  // Navigate to the search engine
+  await page.goto("https://www.bing.com");
 
-  await page.getByRole("link", { name: "English" }).click();
   // Find the search input and type a query
-  await page.getByLabel("Search", { exact: true }).fill("Playwright");
+  await page.fill('input[name="q"]', "Playwright");
 
-  // Verifying cursor is within the  search input
-  await page.getByLabel("Search", { exact: true }).click();
-
-  // Press Enter to search
-  await page.keyboard.press("Enter");
+  // Click the search button
+  await page.getByLabel("Search the web").click();
 
   // Wait for the results page to load and display the results
-  await page.waitForSelector("#search");
+  await page.waitForSelector("#b_results");
 
   // Take a screenshot of the results page
-  await page.screenshot({ path: "google-search-results.png" });
+  await page.screenshot({ path: "search-results.png" });
 
   // Close the browser
   await browser.close();
