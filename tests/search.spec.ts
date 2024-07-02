@@ -18,11 +18,11 @@ test("Search for a term and take a screenshot of the results page", async () => 
   // await page.getByLabel("Search the web").click();
 
   // Wait for the results page to load and display the results
-  await page.waitForSelector("#b_results");
+  await page.waitForSelector("#b_results", { timeout: 60000 });
 
   // Take a screenshot of the results page
   await page.screenshot({ path: "search-results.png" });
 
   // Close the browser
   await browser.close();
-}, 60000);
+});
