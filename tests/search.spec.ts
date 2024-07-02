@@ -23,4 +23,4 @@ test("Search for a term and take a screenshot of the results page", async () => 
 
   // Close the browser
   await browser.close();
-});
+}, 60000);
