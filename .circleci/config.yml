@@ -1,0 +1,29 @@
+version: 2.1
+
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:14.17
+    working_directory: ~/repo
+
+jobs:
+  test:
+    executor: node-executor
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: |
+            npm install
+            npx playwright install
+
+      - run:
+          name: Run Playwright tests
+          command: npm run test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
